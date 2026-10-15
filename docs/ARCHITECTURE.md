@@ -6,9 +6,9 @@ CFD is an open-ended visual interface for **observable** data about computationa
 
 ## Layers
 
-1. **Signal contract:** typed and validated records in `src/lib/signals.mjs`. Every event carries provenance. Version 0.1 generates only `SIMULATED` records.
-2. **Geometry:** pure deterministic sampling and motion in `src/lib/field.mjs`. The four visualization modes are artistic encodings, not measured physical geometry.
-3. **Renderer:** `src/components/FieldCanvas.jsx` renders the field on a DPR-aware Canvas 2D surface with a pause control and an initial reduced-motion preference.
+1. **Signal contract:** typed and validated records in `src/lib/signals.mjs`. Every event carries provenance. The prototype currently generates only `SIMULATED` records.
+2. **Geometry:** pure deterministic sampling and motion in `src/lib/field.mjs`. Five visualization modes are artistic encodings, not measured physical geometry.
+3. **Renderer:** `src/components/DenseFieldCanvas.jsx` runs an original procedural WebGL2 shader over one world-space field; `src/components/FieldCanvas.jsx` remains a lower-density Canvas 2D fallback. The initial reduced-motion preference is preserved.
 4. **Interface:** `src/App.jsx` provides accessible controls, sample event ledger, exported still frames, and explicit provenance labels.
 5. **Adapters (future):** optional read-only bridges may translate externally provided, instrumented events into the signal contract. They will require explicit opt-in and visible source attribution.
 
@@ -26,7 +26,7 @@ No accounts, analytics, tracking pixels, browser persistence, model downloads, n
 
 ## Performance
 
-Canvas 2D and a capped particle count (2,000 max) keep this prototype accessible on ordinary laptops. Layout uses a resize observer, pixel density is capped, and motion can be paused. There is no WebGPU or biological hardware dependency.
+WebGL2 uses full-screen procedural sampling, a capped device-pixel ratio, and a ~30 FPS redraw target. Virtual dot counts refer to a possible deterministic lattice, not allocated or independently rendered points. A Canvas 2D fallback caps actual JS particles at 2,000. Layout uses a resize observer and provides motion pause and reduced-motion initial state. There is no WebGPU, model-adapter, or biological hardware dependency.
 
 ## Development constraints
 

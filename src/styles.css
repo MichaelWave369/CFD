@@ -209,3 +209,44 @@ input[type="range"]::-moz-range-thumb { width: 13px; height: 13px; border: none;
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* CFD 0.2: The field is a bounded square, never a stretched scene. */
+.square-viewport {
+  width: min(100%, 640px);
+  aspect-ratio: 1 / 1;
+  margin: 22px auto;
+  position: relative;
+  border: 1px solid #26334d;
+  box-shadow: 0 0 0 1px #060b14, 0 0 55px #3a3d871d;
+  overflow: hidden;
+}
+.square-viewport .field-surface, .square-viewport .dense-fallback {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+.square-viewport .field-canvas { width: 100%; height: 100%; }
+.dense-caption {
+  position: absolute;
+  bottom: 22px;
+  left: 20px;
+  pointer-events: none;
+  color: #7894b3;
+  font: 700 9px/1.4 ui-monospace, Consolas, monospace;
+  letter-spacing: .09em;
+}
+.fallback-note {
+  position: absolute;
+  z-index: 2;
+  bottom: 52px;
+  left: 20px;
+  font: 600 10px/1.5 ui-monospace, monospace;
+  color: #ffd9a3;
+  background: #14131dcd;
+  border: 1px solid #6b543b;
+  padding: 5px 9px;
+}
+@media (max-width: 480px) {
+  .square-viewport { margin: 8px auto; }
+  .dense-caption { left: 11px; bottom: 12px; font-size: 8px; }
+}

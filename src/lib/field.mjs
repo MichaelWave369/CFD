@@ -1,5 +1,6 @@
 // Pure geometry. This module never reads model internals or external telemetry.
 export const MODES = Object.freeze([
+  { id: "origin", label: "Origin Field", detail: "A dense, subtle Fuzzy Dots field" },
   { id: "drift", label: "Free Drift", detail: "A floating field of colored points" },
   { id: "lattice", label: "Fuzzy Lattice", detail: "The original square-array inspiration" },
   { id: "vortex", label: "Vortex", detail: "Depth-projected inward and outward flow" },

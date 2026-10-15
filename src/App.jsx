@@ -1,7 +1,8 @@
 import { useMemo, useRef, useState } from "react";
-import FieldCanvas from "./components/FieldCanvas.jsx";
+import DenseFieldCanvas from "./components/DenseFieldCanvas.jsx";
 import { MODES } from "./lib/field.mjs";
 import { demoSignals } from "./lib/signals.mjs";
+import { virtualDotCount } from "./lib/fieldViewport.mjs";
 
 function RangeControl({ id, label, value, min, max, step, onChange, format }) {
   const progress = ((value - min) / (max - min)) * 100;
@@ -22,11 +23,12 @@ function RangeControl({ id, label, value, min, max, step, onChange, format }) {
 
 export default function App() {
   const canvasRef = useRef(null);
-  const [mode, setMode] = useState("drift");
-  const [density, setDensity] = useState(720);
+  const [mode, setMode] = useState("origin");
+  const [density, setDensity] = useState(1024);
   const [speed, setSpeed] = useState(1);
   const [zoom, setZoom] = useState(1);
   const [seed, setSeed] = useState(1);
+  const [renderer, setRenderer] = useState("webgl2");
   const [paused, setPaused] = useState(() =>
     typeof window !== "undefined" && !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
   );
@@ -53,7 +55,7 @@ export default function App() {
         </a>
         <div className="topbar-right">
           <span className="quiet-state"><span className="state-dot" /> LOCAL / NO CONNECTION</span>
-          <span className="version">RESEARCH PREVIEW <b>0.1.0</b></span>
+          <span className="version">RESEARCH PREVIEW <b>0.2.0</b></span>
           <a className="github-link" href="https://github.com/MichaelWave369/CFD" target="_blank" rel="noreferrer">GITHUB ↗</a>
         </div>
       </header>
@@ -64,7 +66,7 @@ export default function App() {
           <h2>Shape the field<span className="accent-period">.</span></h2>
           <p className="panel-intro">An experimental language of particles, structure, and motion.</p>
 
-          <div className="section-rule"><span>GEOMETRY MODE</span><span>04 AVAILABLE</span></div>
+          <div className="section-rule"><span>GEOMETRY MODE</span><span>{String(MODES.length).padStart(2, "0")} AVAILABLE</span></div>
           <div className="mode-options" role="group" aria-label="Geometry mode">
             {MODES.map((entry, index) => (
               <button
@@ -73,7 +75,7 @@ export default function App() {
                 aria-pressed={mode === entry.id}
                 onClick={() => setMode(entry.id)}
               >
-                <span className="mode-icon" aria-hidden="true">{["✧", "▦", "◌", "⟡"][index]}</span>
+                <span className="mode-icon" aria-hidden="true">{["✦", "✧", "▦", "◌", "⟡"][index]}</span>
                 <span className="mode-copy"><strong>{entry.label}</strong><small>{entry.detail}</small></span>
                 <span className="mode-index">0{index + 1}</span>
               </button>
@@ -81,9 +83,9 @@ export default function App() {
           </div>
 
           <div className="section-rule sliders-label"><span>FIELD PARAMETERS</span><span>ADJUSTABLE</span></div>
-          <RangeControl id="density" label="Point density" min={180} max={1440} step={60} value={density} onChange={setDensity} format={(v) => v.toLocaleString() + " pts"} />
+          <RangeControl id="density" label="Virtual dots per side" min={256} max={1536} step={64} value={density} onChange={setDensity} format={(v) => v.toLocaleString() + " / axis"} />
           <RangeControl id="speed" label="Motion rate" min={0.2} max={2.5} step={0.1} value={speed} onChange={setSpeed} format={(v) => v.toFixed(1) + " ×"} />
-          <RangeControl id="zoom" label="Field scale" min={0.6} max={1.4} step={0.05} value={zoom} onChange={setZoom} format={(v) => Math.round(v * 100) + "%"} />
+          <RangeControl id="zoom" label="Into the field" min={-2} max={4} step={0.25} value={Math.log2(zoom)} onChange={(v) => setZoom(2 ** v)} format={(v) => (2 ** v).toFixed(v < 0 ? 2 : 1) + "×"} />
 
           <div className="action-grid">
             <button className="action-primary" type="button" onClick={() => setPaused((p) => !p)}>
@@ -93,7 +95,7 @@ export default function App() {
               ↻ &nbsp; Regenerate
             </button>
           </div>
-          <button className="text-action" type="button" onClick={() => { setDensity(720); setSpeed(1); setZoom(1); setMode("drift"); setSeed(1); }}>
+          <button className="text-action" type="button" onClick={() => { setDensity(1024); setSpeed(1); setZoom(1); setMode("origin"); setSeed(1); }}>
             Reset default parameters <span aria-hidden="true">↗</span>
           </button>
 
@@ -118,12 +120,12 @@ export default function App() {
               <div className="stage-title"><span className="stage-line" /> FIELD VIEWPORT <span className="stage-title-mode">/ {currentMode.label.toUpperCase()}</span></div>
               <div className="stage-tag">SYNTHETIC · DEMONSTRATION ONLY</div>
             </div>
-            <FieldCanvas mode={mode} density={density} speed={speed} zoom={zoom} seed={seed} paused={paused} canvasRef={canvasRef} />
+            <div className="square-viewport"><DenseFieldCanvas mode={mode} density={density} speed={speed} zoom={zoom} seed={seed} paused={paused} canvasRef={canvasRef} onRenderer={setRenderer} /></div>
             <div className="stage-footer">
               <div className="stage-metrics">
-                <span><i /> FIELD ENGINE <strong>CANVAS 2D</strong></span>
-                <span>POINTS <strong>{density.toLocaleString()}</strong></span>
-                <span>DEPTH <strong>PROJECTED</strong></span>
+                <span><i /> FIELD ENGINE <strong>{renderer === "webgl2" ? "WEBGL2" : "CANVAS 2D"}</strong></span>
+                <span>VIRTUAL DOTS <strong>{virtualDotCount(density).toLocaleString()}</strong></span>
+                <span>ZOOM <strong>{zoom.toFixed(2)}×</strong></span>
               </div>
               <button className="snapshot" type="button" onClick={saveFrame}>↓ SAVE FRAME</button>
             </div>
@@ -167,7 +169,7 @@ export default function App() {
       </main>
 
       <footer className="site-footer">
-        <span>CFD / FIELD STUDY 001</span>
+        <span>CFD / FIELD STUDY 002</span>
         <span>PEOPLE ABOVE PROFIT <b>·</b> LEDGER ABOVE EGO</span>
         <span>BUILT FOR CURIOSITY, NOT CERTAINTY</span>
       </footer>
