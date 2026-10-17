@@ -132,6 +132,8 @@ export function decodeRasterPocketImage(frame) {
   }
   const length = header[5] * 256 + header[6];
   if (length > RASTER_MAX_BYTES) return decodeFailure("LENGTH_ERROR: exceeds finite frame", disagreements);
+  // Report disagreements over the complete packet exactly once.
+  disagreements = 0;
   const all = readBytes(RASTER_HEADER_BYTES + length);
   const bytes = all.slice(RASTER_HEADER_BYTES);
   const expected = Array.from(header.slice(7, 11), byte => byte.toString(16).padStart(2, "0")).join("");
