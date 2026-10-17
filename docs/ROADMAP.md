@@ -33,14 +33,25 @@
 - [ ] Verify app visually and interactively in desktop/mobile browser
 - [ ] Independently decode noisy rasterized pocket pixels (not part of v0.3)
 
-## v0.4 · Observable signals
+## v0.4 · Raster Pocket Reader (this PR)
+
+- [x] Independent RGBA pixel-to-byte decoder requiring no original message side channel
+- [x] Self-describing 492×492 finite 1 KiB module format, 3 replicated bit copies
+- [x] PNG download/reload for an external file round-trip
+- [x] Pixel-noise and deliberate 1/2 replica corruption controls
+- [x] Independent decoder test suite, size/orientation/corruption rejection
+- [x] Research protocol and checksums with explicit limitations
+- [ ] Browser visual/device/accessibility QA and PNG reload hands-on checks
+- [ ] Test independent geometric rotation, scale, shear and camera-image decoding (future)
+
+## v0.5 · Observable signals
 
 - [ ] Read-only opt-in adapter for a local process or exported trace
 - [ ] Separate OBSERVED, INFERRED, VERIFIED, and SIMULATED channels
 - [ ] Pause, inspect, and replay actual events
 - [ ] Evidence receipts documenting source, timestamp, transform, and limitations
 
-## v0.5 · Spatial interpretation
+## v0.6 · Spatial interpretation
 
 - [ ] Optional 3D or volumetric renderer, accessible 2D fallback
 - [ ] Graph constraints for faithful relation mapping
