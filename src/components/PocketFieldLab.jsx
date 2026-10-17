@@ -212,7 +212,7 @@ export default function PocketFieldLab() {
     };
     const url = URL.createObjectURL(new Blob([JSON.stringify(receipt, null, 2)], { type: "application/json" }));
     const a = document.createElement("a"); a.href = url; a.download = "CFD-pocket-receipt.json";
-    a.click(); URL.revokeObjectURL(url);
+    a.click(); window.setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
   return (
@@ -251,6 +251,10 @@ export default function PocketFieldLab() {
           </label>
           <label className="pocket-slider">CROSS → DIAMOND <strong>{Math.round(diamond * 45)}°</strong>
             <input type="range" min="0" max="1" step="0.02" value={diamond} onChange={e => setDiamond(Number(e.target.value))} />
+          </label>
+          <label className="pocket-slider">EXPLORATION DEPTH <strong>{depth} / {POCKET_DEPTH}</strong>
+            <input type="range" min="1" max={POCKET_DEPTH} step="1" value={depth}
+              onChange={e => { const n = Number(e.target.value); setDepth(n); setPath(p => p.slice(0, n)); }} />
           </label>
           <div className="pocket-label">PROJECTION PARAMETERS · NOT SPATIAL DIMENSIONS</div>
           <div className="pocket-choice">
