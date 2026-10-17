@@ -55,14 +55,25 @@
 - [ ] Verify distorted import/export and controls in a real browser
 - [ ] Independently recover nonlinear warps/perspective changes (future)
 
-## v0.6 · Observable signals
+## v0.6 · Nonlinear optical pocket recovery (this PR)
+
+- [x] Smooth, spatially varying 2D sine/cross-wave deformation
+- [x] Twelve distinct fiducial colors in a separate gutter
+- [x] Fit ten unknown forward-model coefficients from image pixels only
+- [x] Sample warped pixel modules and reconstruct finite 1 KiB carrier
+- [x] Browser sliders, PNG save/load and local JSON evidence receipt
+- [x] Tests for exact byte recovery and malformed/missing marker failures
+- [ ] Browser/device and exported-PNG verification by human
+- [ ] Nonparametric mesh and unsupported-warp negative controls (future)
+
+## v0.7 · Observable signals
 
 - [ ] Read-only opt-in adapter for a local process or exported trace
 - [ ] Separate OBSERVED, INFERRED, VERIFIED, and SIMULATED channels
 - [ ] Pause, inspect, and replay actual events
 - [ ] Evidence receipts documenting source, timestamp, transform, and limitations
 
-## v0.7 · Spatial interpretation
+## v0.8 · Spatial interpretation
 
 - [ ] Optional 3D or volumetric renderer, accessible 2D fallback
 - [ ] Graph constraints for faithful relation mapping
