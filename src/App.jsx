@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import DenseFieldCanvas from "./components/DenseFieldCanvas.jsx";
+import PocketFieldLab from "./components/PocketFieldLab.jsx";
 import { MODES } from "./lib/field.mjs";
 import { demoSignals } from "./lib/signals.mjs";
 import { virtualDotCount } from "./lib/fieldViewport.mjs";
@@ -55,7 +56,7 @@ export default function App() {
         </a>
         <div className="topbar-right">
           <span className="quiet-state"><span className="state-dot" /> LOCAL / NO CONNECTION</span>
-          <span className="version">RESEARCH PREVIEW <b>0.2.0</b></span>
+          <span className="version">RESEARCH PREVIEW <b>0.3.0</b></span>
           <a className="github-link" href="https://github.com/MichaelWave369/CFD" target="_blank" rel="noreferrer">GITHUB ↗</a>
         </div>
       </header>
@@ -111,6 +112,7 @@ export default function App() {
               <div className="eyebrow"><span className="eyebrow-line" /> AN EXPERIMENT IN SEEING SYSTEMS</div>
               <h1>Beyond the screen.<br /><em>Into the field.</em></h1>
               <p>A living visual grammar for relationships and observable signals. Start with imagination. Stay grounded in evidence.</p>
+              <a className="pocket-jump" href="#pocket-lab">↘ EXPLORE INFINITE POCKET FIELD</a>
             </div>
             <div className="heading-glyph" aria-hidden="true"><span>◌</span><small>F / 01</small></div>
           </div>
@@ -130,6 +132,8 @@ export default function App() {
               <button className="snapshot" type="button" onClick={saveFrame}>↓ SAVE FRAME</button>
             </div>
           </div>
+
+          <PocketFieldLab />
 
           <div className="lower-grid">
             <section className="info-card">
