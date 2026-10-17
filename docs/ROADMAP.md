@@ -44,14 +44,25 @@
 - [ ] Browser visual/device/accessibility QA and PNG reload hands-on checks
 - [ ] Test independent geometric rotation, scale, shear and camera-image decoding (future)
 
-## v0.5 · Observable signals
+## v0.5 · Optical-affine recovery (this PR)
+
+- [x] Embed the v0.4 pixel code in a carrier with four distinct optical fiducials
+- [x] Render unknown (to decoder) rotation, shear, scale, and translation
+- [x] Estimate affine mapping from independently detected marker centroids
+- [x] Reconstruct raster from sampled pixels and verify original bytes
+- [x] PNG export/reimport, checksum and calibration-residual receipts
+- [x] Deterministic affine-recovery and damaged-marker tests
+- [ ] Verify distorted import/export and controls in a real browser
+- [ ] Independently recover nonlinear warps/perspective changes (future)
+
+## v0.6 · Observable signals
 
 - [ ] Read-only opt-in adapter for a local process or exported trace
 - [ ] Separate OBSERVED, INFERRED, VERIFIED, and SIMULATED channels
 - [ ] Pause, inspect, and replay actual events
 - [ ] Evidence receipts documenting source, timestamp, transform, and limitations
 
-## v0.6 · Spatial interpretation
+## v0.7 · Spatial interpretation
 
 - [ ] Optional 3D or volumetric renderer, accessible 2D fallback
 - [ ] Graph constraints for faithful relation mapping
