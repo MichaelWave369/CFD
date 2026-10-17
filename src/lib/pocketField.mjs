@@ -12,7 +12,9 @@ export function depthCapacity(depth) {
 
 export function addressForIndex(index, depth = POCKET_DEPTH) {
   if (!Number.isInteger(index) || index < 0 || index >= depthCapacity(depth)) throw new RangeError("Index out of bounds");
-  return index.toString(4).padStart(depth, "0");
+  // Reverse base-four digits so initial bytes spread across all four visible quadrants.
+  // This is a bijective address permutation, not extra storage or compression.
+  return index.toString(4).padStart(depth, "0").split("").reverse().join("");
 }
 
 export function boundsForAddress(address = "") {
