@@ -150,6 +150,19 @@ export function warpMeshCarrier(carrier,settings={}){
       put(target,px,py,get(carrier,sx,sy));
     }
   }
+  // A source-grid corner has only one incident cell, so inverse-rasterizing
+  // just the 4x4 data cells would clip 3/4 of its marker. Stamp complete
+  // calibration discs *after* warping, at the independently generated node
+  // positions; the decoder still receives only the resulting pixels.
+  // The reserved 19px gutters keep these discs clear of all data modules.
+  for(const marker of MESH_MARKERS){
+    const center=nodes[marker.row][marker.col];
+    const mx=Math.round(center.x),my=Math.round(center.y),radius=11;
+    for(let dy=-radius;dy<=radius;dy++)for(let dx=-radius;dx<=radius;dx++){
+      if(dx*dx+dy*dy<=radius*radius)
+        put(target,mx+dx,my+dy,marker.color);
+    }
+  }
   return target;
 }
 function digit(value){
