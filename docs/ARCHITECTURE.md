@@ -12,7 +12,8 @@ CFD is an open-ended visual interface for **observable** data about computationa
 4. **Interface:** `src/App.jsx` provides accessible controls, sample event ledger, exported still frames, and explicit provenance labels.
 5. **Pocket Field Lab (v0.3):** the separate `PocketFieldLab.jsx` Canvas 2D view renders simulated higher-parameter patterns and finite recursive pocket addresses from `src/lib/pocketField.mjs`. Its transform has an analytic inverse and its codec checks exact byte reconstruction; it is not integrated with the v0.2 WebGL shader's pixels. A deliberately corrupted byte fails the integrity checksum. [Protocol](POCKET_FIELD_LAB.md).
 6. **Raster Pocket Reader (v0.4):** `RasterPocketLab.jsx` exports an actual 492x492 RGBA bit-grid image to PNG and decodes `getImageData` from the displayed canvas without original bytes. `rasterPocket.mjs` handles 3x modular repetition, finite header, majority votes, and noncryptographic integrity. The design has exact-size/orientation preconditions, no camera calibration, and no deformation recovery. [Format and test protocol](RASTER_POCKET_READER.md).
-7. **Adapters (future):** optional read-only bridges may translate externally provided, instrumented events into the signal contract. They will require explicit opt-in and visible source attribution.
+7. **Optical affine recovery (v0.5):** `opticalPocket.mjs` creates a carrier with four color-coded fiducials, applies a global invertible affine warp, and independently detects marker centroids from transformed pixels to reconstruct a raster without source bytes or transform settings. `OpticalPocketLab.jsx` visualizes and exports/imports the frame. Nonlinear deformations remain unsupported. [Protocol](OPTICAL_POCKET_RECOVERY.md).
+8. **Adapters (future):** optional read-only bridges may translate externally provided, instrumented events into the signal contract. They will require explicit opt-in and visible source attribution.
 
 ## Separation of claims
 

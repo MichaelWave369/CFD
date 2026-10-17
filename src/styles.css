@@ -336,3 +336,40 @@ input[type="range"]::-moz-range-thumb { width: 13px; height: 13px; border: none;
 .raster-receipt:disabled { opacity: .43; cursor: not-allowed; }
 .raster-boundary { border-top: 1px solid #31465e; padding-top: 15px; margin: 19px 0 0; color: #92aac1; font-size: 11px; line-height: 1.75; }
 @media (max-width: 1270px) { .raster-grid { grid-template-columns: 1fr; } }
+
+
+/* CFD v0.5 · optical-affine experiment */
+.optical-lab { margin: 23px 0; padding: clamp(16px, 2.6vw, 28px); border: 1px solid #435474; border-radius: 13px; background: linear-gradient(135deg, #121c2e, #0b1324 60%, #1a1935); }
+.optical-heading { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 18px; margin-bottom: 23px; }
+.optical-heading h2 { font: 600 clamp(27px, 3vw, 40px)/1.1 "Space Grotesk", sans-serif; margin: 10px 0; letter-spacing: -.03em; color: #f2f6ff; }
+.optical-heading h2 em { font-style: normal; color: #b4a5fb; }
+.optical-heading p { color: #a4b3cf; max-width: 670px; font-size: 12px; line-height: 1.75; margin: 0; }
+.optical-chip { align-self: start; border-radius: 4px; border: 1px solid #597787; color: #91e8d8; padding: 8px; font: 700 9px/1.5 ui-monospace, Consolas, monospace; max-width: 240px; }
+.optical-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 340px); align-items: start; gap: 17px; }
+.optical-visual, .optical-controls { border: 1px solid #35425a; background: #0d1728; border-radius: 9px; padding: 13px; min-width: 0; }
+.optical-toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font: 700 9px/1.5 ui-monospace, monospace; color: #95e4dc; padding: 8px 3px; }
+.optical-toolbar span:last-child { color: #aba6dd; }
+.optical-canvas { display: block; width: min(100%, 600px); max-width: 100%; aspect-ratio: 1; height: auto; margin: auto; border: 1px solid #495d75; background: #090d19; image-rendering: pixelated; }
+.optical-visual p, .optical-caveat { font-size: 11px; line-height: 1.75; color: #8da0bd; }
+.optical-controls label:not(.optical-upload) { display: block; color: #c2d4e6; font: 700 10px/1.5 "DM Sans", sans-serif; margin-bottom: 9px; }
+.optical-controls textarea { width: 100%; padding: 10px; resize: vertical; background: #091526; color: #eef9ff; border-radius: 5px; border: 1px solid #405c7e; margin: 0 0 11px; font: 12px/1.5 ui-monospace, monospace; }
+.optical-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 13px; }
+.optical-actions button, .optical-upload, .optical-receipt, .optical-read { flex: 1; min-width: 103px; background: #1c354d; color: #deecfa; border: 1px solid #52788f; border-radius: 5px; padding: 10px 8px; cursor: pointer; font: 700 10px/1.5 "DM Sans", sans-serif; text-align: center; }
+.optical-actions button:hover, .optical-upload:hover, .optical-receipt:hover:not(:disabled) { background: #2b506b; }
+.optical-rule { height: 1px; background: #34435d; margin: 18px 0; }
+.optical-controls label.optical-slider { margin: 13px 0 17px; display: block; }
+.optical-slider span { display: flex; justify-content: space-between; gap: 10px; color: #a6bdd2; font-size: 10px; }
+.optical-slider strong { color: #92ecda; font-size: 11px; }
+.optical-slider input[type="range"] { display: block; width: 100%; margin-top: 13px; }
+.optical-read { background: #8ce3d5; color: #091a21; border-color: #8ce3d5; width: 100%; padding: 13px 6px; }
+.optical-read:hover { background: #c5f7e7; }
+.optical-controls input[type="file"] { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.optical-upload { display: block; }
+.optical-result { display: grid; gap: 8px; border-radius: 5px; border: 1px solid #475e78; padding: 12px; margin: 13px 0; background: #0b1a29; color: #c3d6e8; font: 10px/1.6 ui-monospace, Consolas, monospace; overflow-wrap: anywhere; }
+.optical-pass { color: #9ef2cc; } .optical-fail, .optical-error { color: #ffb3b3; }
+.optical-result small { color: #9eafc7; }
+.optical-error { font-size: 11px; }
+.optical-receipt { width: 100%; margin-top: 7px; }
+.optical-receipt:disabled { opacity: .42; cursor: not-allowed; }
+.optical-caveat { border-top: 1px solid #34445d; margin: 18px 0 0; padding-top: 14px; }
+@media (max-width: 1280px) { .optical-grid { grid-template-columns: 1fr; } }
