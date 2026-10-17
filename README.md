@@ -23,6 +23,12 @@ The visual field is now a **square viewport** into a persistent procedural color
 
 See [Fuzzy Dots Field specification](docs/FUZZY_DOTS_FIELD.md) for the user's first-person source description and proposed visual behaviors.
 
+## v0.6 · Nonlinear Pocket Recovery
+
+The newest local-only panel experiments with **smooth, nonuniform image deformation**: sine-wave columns, cross pulls and corner twists. A 12-color fiducial system lets a separate decoder estimate ten unknown coefficients of a **declared sinusoidal map** directly from a warped 900×900 pixel image. It then attempts to recover a real, deliberately encoded 1 KiB payload and records the marker-fit error and checksum. PNG import/export and test receipts are included.
+
+This is not universal elastic reconstruction and does not prove extra physical dimensions, infinite memory, or new physics. See the [v0.6 protocol](docs/NONLINEAR_POCKET_RECOVERY.md).
+
 ## v0.5 · Elastic Optical Recovery (affine only)
 
 A new optical experiment intentionally rotates, shears, scales, and translates a 1 KiB-bearing image. Four uniquely colored registration markers let the reader **estimate the geometric transformation from the warped RGBA pixels themselves**, reconstruct a finite raster, and decode the original bytes. This can be tested again after exporting/reimporting a 900×900 PNG. The decoder receives neither the source payload nor the UI slider values.
