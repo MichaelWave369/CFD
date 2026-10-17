@@ -23,6 +23,12 @@ The visual field is now a **square viewport** into a persistent procedural color
 
 See [Fuzzy Dots Field specification](docs/FUZZY_DOTS_FIELD.md) for the user's first-person source description and proposed visual behaviors.
 
+## v0.5 · Elastic Optical Recovery (affine only)
+
+A new optical experiment intentionally rotates, shears, scales, and translates a 1 KiB-bearing image. Four uniquely colored registration markers let the reader **estimate the geometric transformation from the warped RGBA pixels themselves**, reconstruct a finite raster, and decode the original bytes. This can be tested again after exporting/reimporting a 900×900 PNG. The decoder receives neither the source payload nor the UI slider values.
+
+Here "elastic" refers to uniform **affine shear**, not nonlinear continuous rubber-sheet recovery. See [v0.5 optical experiment](docs/OPTICAL_POCKET_RECOVERY.md).
+
 ## v0.4 · Raster Pocket Reader
 
 A second experimental panel now **encodes real byte values into pixels** and independently decodes them from the on-screen 492×492 image. Each bit has three pixel-module replicas with majority-vote recovery. Try 1 KiB, add controlled pixel noise, destroy one replica band to test redundancy, or destroy two to test failure. Save the PNG, reload it, and compare the decoded bytes against the stored noncryptographic checksum. Local-only, no backend.
