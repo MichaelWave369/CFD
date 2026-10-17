@@ -10,7 +10,8 @@ CFD is an open-ended visual interface for **observable** data about computationa
 2. **Geometry:** pure deterministic sampling and motion in `src/lib/field.mjs`. Five visualization modes are artistic encodings, not measured physical geometry.
 3. **Renderer:** `src/components/DenseFieldCanvas.jsx` runs an original procedural WebGL2 shader over one world-space field; `src/components/FieldCanvas.jsx` remains a lower-density Canvas 2D fallback. The initial reduced-motion preference is preserved.
 4. **Interface:** `src/App.jsx` provides accessible controls, sample event ledger, exported still frames, and explicit provenance labels.
-5. **Adapters (future):** optional read-only bridges may translate externally provided, instrumented events into the signal contract. They will require explicit opt-in and visible source attribution.
+5. **Pocket Field Lab (v0.3):** the separate `PocketFieldLab.jsx` Canvas 2D view renders simulated higher-parameter patterns and finite recursive pocket addresses from `src/lib/pocketField.mjs`. Its transform has an analytic inverse and its codec checks exact byte reconstruction; it is not integrated with the v0.2 WebGL shader's pixels. A deliberately corrupted byte fails the integrity checksum. [Protocol](POCKET_FIELD_LAB.md).
+6. **Adapters (future):** optional read-only bridges may translate externally provided, instrumented events into the signal contract. They will require explicit opt-in and visible source attribution.
 
 ## Separation of claims
 
@@ -31,5 +32,5 @@ WebGL2 uses full-screen procedural sampling, a capped device-pixel ratio, and a 
 ## Development constraints
 
 - No third-party UI component kits or copied reference implementations.
-- Tests cover deterministic geometry and signal schema integrity.
+- Tests cover deterministic geometry, finite pocket/address recovery, corruption rejection, coarse-state toy nonclosure, and signal schema integrity.
 - Verify production build and Pages routing before calling a release complete.
