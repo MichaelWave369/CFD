@@ -23,6 +23,14 @@ The visual field is now a **square viewport** into a persistent procedural color
 
 See [Fuzzy Dots Field specification](docs/FUZZY_DOTS_FIELD.md) for the user's first-person source description and proposed visual behaviors.
 
+## v0.3 · Infinite Pocket Field Lab
+
+The original v0.2 **square Fuzzy Dots renderer stays intact**. A second, clearly simulated interactive laboratory adds ring columns, corner oscillators, cross-to-diamond phases, elastic shears, four-way recursive navigation, and an optional Mandelbrot escape-time view. The 2/4/6 parameter control changes a *2D procedural projection*, not physical spatial dimensionality.
+
+The **PocketSquare byte test** addresses up to 1,024 UTF-8 or synthetic bytes through a finite depth-six quadtree. Verify a known, reversible geometric warp by exact address reconstruction and FNV-1a32 integrity checksum; deliberately corrupt a byte to get a FAIL. The separate Altermath-inspired coarse-equal/response-different probe is a toy control, not empirical theory validation. Export a local-only JSON receipt.
+
+See [Pocket Field Lab protocol and limitations](docs/POCKET_FIELD_LAB.md). Neither the shader appearance nor the codec creates unlimited storage or recovers data directly from raster pixels.
+
 ## Explore
 
 - **Origin:** dense, slowly flowing RGB microdot field
