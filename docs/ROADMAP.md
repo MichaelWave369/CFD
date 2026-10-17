@@ -21,14 +21,26 @@
 - [x] Extend deterministic viewport tests
 - [ ] Verify WebGL2 visuals, GPU usage, pause, fallback, snapshots and mobile in a real browser
 
-## v0.3 · Observable signals
+## v0.3 · Infinite Pocket Field Lab (this PR)
+
+- [x] Finite recursive quadtree address math and navigable canvas lab
+- [x] Ring/column/corner procedural modes, cross-to-diamond and elastic transforms
+- [x] 2/4/6-parameter procedural projections and bounded Mandelbrot escape view
+- [x] One KiB payload encoding with exact known-transform address recovery
+- [x] Deliberate corruption producing integrity FAIL
+- [x] Equal-coarse / unequal-response constructed Altermath toy case
+- [x] Local JSON verification receipts and deterministic tests
+- [ ] Verify app visually and interactively in desktop/mobile browser
+- [ ] Independently decode noisy rasterized pocket pixels (not part of v0.3)
+
+## v0.4 · Observable signals
 
 - [ ] Read-only opt-in adapter for a local process or exported trace
 - [ ] Separate OBSERVED, INFERRED, VERIFIED, and SIMULATED channels
 - [ ] Pause, inspect, and replay actual events
 - [ ] Evidence receipts documenting source, timestamp, transform, and limitations
 
-## v0.4 · Spatial interpretation
+## v0.5 · Spatial interpretation
 
 - [ ] Optional 3D or volumetric renderer, accessible 2D fallback
 - [ ] Graph constraints for faithful relation mapping
