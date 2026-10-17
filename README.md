@@ -23,6 +23,12 @@ The visual field is now a **square viewport** into a persistent procedural color
 
 See [Fuzzy Dots Field specification](docs/FUZZY_DOTS_FIELD.md) for the user's first-person source description and proposed visual behaviors.
 
+## v0.4 · Raster Pocket Reader
+
+A second experimental panel now **encodes real byte values into pixels** and independently decodes them from the on-screen 492×492 image. Each bit has three pixel-module replicas with majority-vote recovery. Try 1 KiB, add controlled pixel noise, destroy one replica band to test redundancy, or destroy two to test failure. Save the PNG, reload it, and compare the decoded bytes against the stored noncryptographic checksum. Local-only, no backend.
+
+This is a **finite and exact-size** image codec, not compression, unlimited memory, or proof that the animated Fuzzy Dots contain recoverable data. See the [Raster Pocket Reader protocol](docs/RASTER_POCKET_READER.md) for the bit layout, test gates and limitations.
+
 ## v0.3 · Infinite Pocket Field Lab
 
 The original v0.2 **square Fuzzy Dots renderer stays intact**. A second, clearly simulated interactive laboratory adds ring columns, corner oscillators, cross-to-diamond phases, elastic shears, four-way recursive navigation, and an optional Mandelbrot escape-time view. The 2/4/6 parameter control changes a *2D procedural projection*, not physical spatial dimensionality.
