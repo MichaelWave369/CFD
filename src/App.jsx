@@ -2,6 +2,7 @@ import { useMemo, useRef, useState } from "react";
 import DenseFieldCanvas from "./components/DenseFieldCanvas.jsx";
 import PocketFieldLab from "./components/PocketFieldLab.jsx";
 import RasterPocketLab from "./components/RasterPocketLab.jsx";
+import OpticalPocketLab from "./components/OpticalPocketLab.jsx";
 import { MODES } from "./lib/field.mjs";
 import { demoSignals } from "./lib/signals.mjs";
 import { virtualDotCount } from "./lib/fieldViewport.mjs";
@@ -57,7 +58,7 @@ export default function App() {
         </a>
         <div className="topbar-right">
           <span className="quiet-state"><span className="state-dot" /> LOCAL / NO CONNECTION</span>
-          <span className="version">RESEARCH PREVIEW <b>0.4.0</b></span>
+          <span className="version">RESEARCH PREVIEW <b>0.5.0</b></span>
           <a className="github-link" href="https://github.com/MichaelWave369/CFD" target="_blank" rel="noreferrer">GITHUB ↗</a>
         </div>
       </header>
@@ -136,6 +137,7 @@ export default function App() {
 
           <PocketFieldLab />
           <RasterPocketLab />
+          <OpticalPocketLab />
 
           <div className="lower-grid">
             <section className="info-card">
