@@ -23,6 +23,14 @@ The visual field is now a **square viewport** into a persistent procedural color
 
 See [Fuzzy Dots Field specification](docs/FUZZY_DOTS_FIELD.md) for the user's first-person source description and proposed visual behaviors.
 
+## v0.7 · Elastic Mesh Recovery
+
+The experimental progression now reaches a **5×5 pixel-registration mesh**. Twenty-five colored anchors surround sixteen independent byte-bearing tiles, allowing each tile to bend differently. The decoder locates all twenty-five anchors from the **900×900 RGBA image alone**, rebuilds a piecewise-bilinear map, and attempts to recover up to 1,024 actual bytes through the existing triplicate-bit codec.
+
+The color markers have reserved gutters, so they do not overwrite payload pixels. An explicit **BREAK MARKER** and **SCRAMBLE DATA** button makes failure modes inspectable. No decoder is given the warp slider values or original message. See the [bounded v0.7 mesh experiment](docs/MESH_POCKET_RECOVERY.md).
+
+This remains a finite, purpose-designed raster code, not an arbitrary moving-pattern decoder or limitless storage.
+
 ## v0.6 · Nonlinear Pocket Recovery
 
 The newest local-only panel experiments with **smooth, nonuniform image deformation**: sine-wave columns, cross pulls and corner twists. A 12-color fiducial system lets a separate decoder estimate ten unknown coefficients of a **declared sinusoidal map** directly from a warped 900×900 pixel image. It then attempts to recover a real, deliberately encoded 1 KiB payload and records the marker-fit error and checksum. PNG import/export and test receipts are included.
