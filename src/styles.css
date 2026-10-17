@@ -410,3 +410,40 @@ input[type="range"]::-moz-range-thumb { width: 13px; height: 13px; border: none;
 .nonlinear-export:disabled {opacity:.42;cursor:not-allowed}
 .nonlinear-boundary {border-top:1px solid #364865;margin:20px 0 0;padding-top:14px}
 @media(max-width:1280px){.nonlinear-layout {grid-template-columns:1fr}}
+
+
+/* CFD 0.7 · finite pixel-based mesh registration experiment */
+.mesh-lab {margin:24px 0;padding:clamp(16px,2.5vw,28px);border-radius:13px;border:1px solid #486174;background:linear-gradient(125deg,#141d2d,#0a1525 65%,#141b31)}
+.mesh-head {display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;margin-bottom:22px}
+.mesh-head h2 {font:600 clamp(27px,3vw,40px)/1.1 "Space Grotesk",sans-serif;margin:12px 0;letter-spacing:-.035em;color:#f4f6ff}
+.mesh-head h2 em {font-style:normal;color:#9bdfd9}
+.mesh-head p {font-size:12px;line-height:1.72;color:#a8bdd0;max-width:660px;margin:0}
+.mesh-chip {color:#a3f4e3;border:1px solid #548b82;border-radius:5px;padding:9px;align-self:start;font:700 9px/1.5 ui-monospace,Consolas,monospace}
+.mesh-layout {display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:18px;align-items:start}
+.mesh-stage,.mesh-controls {background:#0b1726;border:1px solid #344a5d;border-radius:10px;padding:14px;min-width:0}
+.mesh-bar {display:flex;flex-wrap:wrap;justify-content:space-between;gap:9px;padding:7px 3px;color:#9aeee1;font:700 9px/1.6 ui-monospace,Consolas,monospace}
+.mesh-bar span:last-child {color:#b7a6e9}
+.mesh-canvas {display:block;width:min(100%,600px);height:auto;aspect-ratio:1;margin:auto;border:1px solid #406780;background:#081324;image-rendering:pixelated}
+.mesh-stage p,.mesh-limits {font-size:11px;line-height:1.8;color:#90a8c1}
+.mesh-controls label:not(.mesh-upload) {display:block;color:#bcd5e6;font:700 10px/1.5 "DM Sans",sans-serif;margin-bottom:9px}
+.mesh-controls textarea {background:#0a1423;border:1px solid #476078;border-radius:6px;width:100%;resize:vertical;color:#e5f8ff;padding:10px;margin-bottom:12px;font:12px/1.5 ui-monospace,monospace}
+.mesh-actions {display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 13px}
+.mesh-actions button,.mesh-upload,.mesh-export,.mesh-verify {background:#1a3448;color:#daf3f3;border:1px solid #547a92;border-radius:6px;padding:10px 8px;flex:1;min-width:103px;text-align:center;cursor:pointer;font:700 10px/1.4 "DM Sans",sans-serif}
+.mesh-actions button:hover,.mesh-upload:hover,.mesh-export:hover:not(:disabled) {background:#28576a}
+.mesh-rule {height:1px;background:#354863;margin:18px 0}
+.mesh-controls label.mesh-slider {display:block;margin:13px 0 19px}
+.mesh-slider span {display:flex;justify-content:space-between;gap:9px;color:#a7bed0}
+.mesh-slider strong {font-size:11px;color:#99eedb}
+.mesh-slider input[type="range"] {display:block;width:100%;margin-top:13px}
+.mesh-verify {width:100%;display:block;background:#98eeda;color:#081d22;border-color:#98eeda;padding:13px 7px}
+.mesh-verify:hover {background:#c9fff3}
+.mesh-controls input[type="file"] {position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.mesh-upload {display:block}
+.mesh-report {display:grid;gap:8px;padding:12px;margin:13px 0;border-radius:6px;border:1px solid #496480;background:#0b1d29;color:#c6d9e8;font:10px/1.6 ui-monospace,Consolas,monospace;overflow-wrap:anywhere}
+.mesh-pass {color:#a0f7d2}.mesh-fail,.mesh-error {color:#ffbdb8}
+.mesh-report small {color:#a0b3c7}
+.mesh-error {font-size:11px}
+.mesh-export {display:block;width:100%;margin-top:10px}
+.mesh-export:disabled {opacity:.4;cursor:not-allowed}
+.mesh-limits {border-top:1px solid #344961;padding-top:14px;margin:19px 0 0}
+@media(max-width:1280px){.mesh-layout {grid-template-columns:1fr}}
