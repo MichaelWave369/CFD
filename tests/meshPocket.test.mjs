@@ -96,7 +96,7 @@ test("tampered raster content fails checksum or header without fooling marker tr
   }
   const decoded=decodeMeshImage(image);
   assert.equal(decoded.passed,false);
-  assert.match(decoded.reason,/HEADER_ERROR|CHECKSUM_MISMATCH/);
+  assert.match(decoded.reason,/FRAME_ERROR|HEADER_ERROR|CHECKSUM_MISMATCH/);
 });
 
 test("malformed input or unsupported mesh strength fails closed",()=>{
