@@ -66,14 +66,26 @@
 - [ ] Browser/device and exported-PNG verification by human
 - [ ] Nonparametric mesh and unsupported-warp negative controls (future)
 
-## v0.7 · Observable signals
+## v0.7 · Piecewise-bilinear mesh optical recovery (this PR)
+
+- [x] Reserve 25 uniquely colored fiducial points in inter-tile gutters
+- [x] Tile the intact finite 1 KiB raster across 16 cells
+- [x] Warp different cells through a measured 5×5 node mesh
+- [x] Independently locate fiducials using transformed RGBA pixels only
+- [x] Reconstruct bit raster via piecewise-bilinear sampling and checksum
+- [x] PNG save/reload, corrupted-marker and scrambled-data negative controls
+- [x] Regression tests and explicit limits documented
+- [ ] Human desktop/mobile browser and export/import QA
+- [ ] Nonparametric out-of-family, noise and resampling benchmarks (future)
+
+## v0.8 · Observable signals
 
 - [ ] Read-only opt-in adapter for a local process or exported trace
 - [ ] Separate OBSERVED, INFERRED, VERIFIED, and SIMULATED channels
 - [ ] Pause, inspect, and replay actual events
 - [ ] Evidence receipts documenting source, timestamp, transform, and limitations
 
-## v0.8 · Spatial interpretation
+## v0.9 · Spatial interpretation
 
 - [ ] Optional 3D or volumetric renderer, accessible 2D fallback
 - [ ] Graph constraints for faithful relation mapping
