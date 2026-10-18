@@ -31,3 +31,16 @@ export function worldToViewport(x, y, zoom) {
 export function modeIndex(id) {
   return Math.max(0, MODE_IDS.indexOf(id));
 }
+
+/**
+ * Fullscreen control's discrete magnification step (one octave).
+ * This deliberately changes only the camera zoom, never particle addresses,
+ * density, seed, or logical field-space identity.
+ */
+export function stepFieldZoom(current, direction) {
+  if (direction !== 1 && direction !== -1) {
+    throw new RangeError("Zoom direction must be +1 or -1");
+  }
+  const safe = clampZoom(current);
+  return clampZoom(safe * (direction > 0 ? 2 : 0.5));
+}
