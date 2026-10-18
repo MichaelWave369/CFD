@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import DenseFieldCanvas from "./components/DenseFieldCanvas.jsx";
+import FieldViewportFrame from "./components/FieldViewportFrame.jsx";
 import PocketFieldLab from "./components/PocketFieldLab.jsx";
 import RasterPocketLab from "./components/RasterPocketLab.jsx";
 import OpticalPocketLab from "./components/OpticalPocketLab.jsx";
@@ -60,7 +61,7 @@ export default function App() {
         </a>
         <div className="topbar-right">
           <span className="quiet-state"><span className="state-dot" /> LOCAL / NO CONNECTION</span>
-          <span className="version">RESEARCH PREVIEW <b>0.7.0</b></span>
+          <span className="version">RESEARCH PREVIEW <b>0.8.0</b></span>
           <a className="github-link" href="https://github.com/MichaelWave369/CFD" target="_blank" rel="noreferrer">GITHUB ↗</a>
         </div>
       </header>
@@ -126,7 +127,15 @@ export default function App() {
               <div className="stage-title"><span className="stage-line" /> FIELD VIEWPORT <span className="stage-title-mode">/ {currentMode.label.toUpperCase()}</span></div>
               <div className="stage-tag">SYNTHETIC · DEMONSTRATION ONLY</div>
             </div>
-            <div className="square-viewport"><DenseFieldCanvas mode={mode} density={density} speed={speed} zoom={zoom} seed={seed} paused={paused} canvasRef={canvasRef} onRenderer={setRenderer} /></div>
+            <FieldViewportFrame
+              paused={paused}
+              onTogglePause={() => setPaused(p => !p)}
+              zoom={zoom}
+              onZoomChange={setZoom}
+              onSaveFrame={saveFrame}
+            >
+              <DenseFieldCanvas mode={mode} density={density} speed={speed} zoom={zoom} seed={seed} paused={paused} canvasRef={canvasRef} onRenderer={setRenderer} />
+            </FieldViewportFrame>
             <div className="stage-footer">
               <div className="stage-metrics">
                 <span><i /> FIELD ENGINE <strong>{renderer === "webgl2" ? "WEBGL2" : "CANVAS 2D"}</strong></span>

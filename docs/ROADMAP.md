@@ -78,14 +78,25 @@
 - [ ] Human desktop/mobile browser and export/import QA
 - [ ] Nonparametric out-of-family, noise and resampling benchmarks (future)
 
-## v0.8 · Observable signals
+## v0.8 · Original square viewport fullscreen (this PR)
+
+- [x] Native element fullscreen with a visible in-field exit control
+- [x] Immersive viewport fallback where native Fullscreen API is unavailable
+- [x] Preserve the 1:1 square and centered field on wide/tall displays
+- [x] Pause, bounded octave zoom and PNG capture inside fullscreen
+- [x] Escape handling, keyboard operability, focus restore and scroll lock
+- [x] Preserve original renderer/seed/state and WebGL2/Canvas fallback
+- [x] Pure zoom/viewport geometry regression tests
+- [ ] Manual browser QA: native fullscreen, fallback, resize, reduced motion, WebGL2 fallback, mobile
+
+## v0.9 · Observable signals
 
 - [ ] Read-only opt-in adapter for a local process or exported trace
 - [ ] Separate OBSERVED, INFERRED, VERIFIED, and SIMULATED channels
 - [ ] Pause, inspect, and replay actual events
 - [ ] Evidence receipts documenting source, timestamp, transform, and limitations
 
-## v0.9 · Spatial interpretation
+## v0.10 · Spatial interpretation
 
 - [ ] Optional 3D or volumetric renderer, accessible 2D fallback
 - [ ] Graph constraints for faithful relation mapping
