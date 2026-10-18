@@ -31,16 +31,33 @@ export default function FieldViewportFrame({
     if (!fallbackOpen) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    function onEscape(event) {
-      if (event.key !== "Escape") return;
-      event.preventDefault();
-      setFallbackOpen(false);
-      toggleRef.current?.focus({ preventScroll: true });
+    function onImmersiveKey(event) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setFallbackOpen(false);
+        toggleRef.current?.focus({ preventScroll: true });
+        return;
+      }
+      // Native fullscreen lives in the browser's top layer. The fixed-position
+      // fallback does not, so keep keyboard tab navigation inside the overlay.
+      if (event.key !== "Tab") return;
+      const surface = surfaceRef.current;
+      const controls = [...(surface?.querySelectorAll("button:not(:disabled)") ?? [])];
+      if (!controls.length) return;
+      const first = controls[0], last = controls[controls.length - 1];
+      const outside = !surface.contains(document.activeElement);
+      if (event.shiftKey && (outside || document.activeElement === first)) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (outside || document.activeElement === last)) {
+        event.preventDefault();
+        first.focus();
+      }
     }
-    document.addEventListener("keydown", onEscape);
+    document.addEventListener("keydown", onImmersiveKey);
     return () => {
       document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", onEscape);
+      document.removeEventListener("keydown", onImmersiveKey);
     };
   }, [fallbackOpen]);
 
