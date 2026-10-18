@@ -23,6 +23,12 @@ The visual field is now a **square viewport** into a persistent procedural color
 
 See [Fuzzy Dots Field specification](docs/FUZZY_DOTS_FIELD.md) for the user's first-person source description and proposed visual behaviors.
 
+## v0.8 · Fullscreen Square Field
+
+The original Fuzzy Dots **FIELD VIEWPORT** now offers **FULLSCREEN**. The field stays a centered 1:1 square and fills the maximum available screen area without stretching. A native browser fullscreen mode is attempted first; if unsupported, an in-page immersive view is used instead. The expanded viewport includes **Exit, Pause/Resume, 2× zoom controls, and PNG capture**. Exiting restores the page without resetting the original animation/seed/camera.
+
+See the [fullscreen field behavior and browser test checklist](docs/FULLSCREEN_FIELD.md). This is a display feature; it does not change data capacity or the evidence boundaries of the Fuzzy Dots artwork.
+
 ## v0.7 · Elastic Mesh Recovery
 
 The experimental progression now reaches a **5×5 pixel-registration mesh**. Twenty-five colored anchors surround sixteen independent byte-bearing tiles, allowing each tile to bend differently. The decoder locates all twenty-five anchors from the **900×900 RGBA image alone**, rebuilds a piecewise-bilinear map, and attempts to recover up to 1,024 actual bytes through the existing triplicate-bit codec.
