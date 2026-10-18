@@ -447,3 +447,121 @@ input[type="range"]::-moz-range-thumb { width: 13px; height: 13px; border: none;
 .mesh-export:disabled {opacity:.4;cursor:not-allowed}
 .mesh-limits {border-top:1px solid #344961;padding-top:14px;margin:19px 0 0}
 @media(max-width:1280px){.mesh-layout {grid-template-columns:1fr}}
+
+
+/* CFD v0.8 · Fullscreen original field. Canvas stays square; no CSS stretching. */
+.field-fullscreen-shell { isolation: isolate; }
+.field-fullscreen-toggle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 8;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(8, 18, 34, .88);
+  color: #c6fff2;
+  border: 1px solid rgba(121, 231, 215, .58);
+  border-radius: 7px;
+  padding: 9px 11px;
+  font: 700 10px/1.2 ui-monospace, Consolas, monospace;
+  letter-spacing: .07em;
+  box-shadow: 0 4px 22px rgba(0, 0, 0, .35);
+}
+.field-fullscreen-toggle:hover { background: #1f3b4b; border-color: #b8ffee; }
+.field-fullscreen-toggle > span:first-child { font-size: 16px; line-height: .75; }
+.field-immersive-toolbar { display: none; }
+.square-viewport.field-immersive-fallback,
+.square-viewport.field-fullscreen-shell:fullscreen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw !important;
+  max-width: none !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  aspect-ratio: auto !important;
+  background: #030711;
+  overflow: hidden;
+  box-shadow: none !important;
+  z-index: 10000;
+}
+.square-viewport.field-fullscreen-shell:fullscreen::backdrop { background: #030711; }
+.square-viewport.field-immersive-fallback > .field-surface,
+.square-viewport.field-immersive-fallback > .dense-fallback,
+.square-viewport.field-fullscreen-shell:fullscreen > .field-surface,
+.square-viewport.field-fullscreen-shell:fullscreen > .dense-fallback {
+  flex: 0 0 auto;
+  width: min(100vw, 100vh) !important;
+  width: min(100vw, 100dvh) !important;
+  height: min(100vw, 100vh) !important;
+  height: min(100vw, 100dvh) !important;
+  max-height: 100%;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+}
+.square-viewport.field-immersive-fallback .dense-fallback > .field-surface,
+.square-viewport.field-fullscreen-shell:fullscreen .dense-fallback > .field-surface {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0;
+}
+.square-viewport.field-immersive-fallback .field-fullscreen-toggle,
+.square-viewport.field-fullscreen-shell:fullscreen .field-fullscreen-toggle {
+  top: max(12px, env(safe-area-inset-top, 0px));
+  right: max(12px, env(safe-area-inset-right, 0px));
+  padding: 11px 14px;
+}
+.square-viewport.field-immersive-fallback .field-immersive-toolbar,
+.square-viewport.field-fullscreen-shell:fullscreen .field-immersive-toolbar {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: max(12px, env(safe-area-inset-bottom, 0px));
+  z-index: 9;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: max-content;
+  max-width: calc(100vw - 20px);
+  padding: 9px;
+  background: rgba(8, 19, 33, .9);
+  color: #d4f8ef;
+  border: 1px solid #527985;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, .4);
+}
+.field-immersive-toolbar button {
+  background: #1b3245;
+  color: #d9f8f4;
+  border: 1px solid #55778a;
+  border-radius: 6px;
+  padding: 8px 10px;
+  min-width: 36px;
+  min-height: 36px;
+  font: 700 11px/1.1 ui-monospace, Consolas, monospace;
+}
+.field-immersive-toolbar button:hover:not(:disabled) { background: #25546a; }
+.field-immersive-toolbar button:disabled { cursor: not-allowed; opacity: .4; }
+.field-immersive-status, .field-immersive-zoom {
+  font: 700 10px/1.2 ui-monospace, Consolas, monospace;
+  letter-spacing: .05em;
+  white-space: nowrap;
+}
+.field-immersive-status { padding: 0 9px; color: #90ded4; }
+.field-immersive-zoom { min-width: 50px; text-align: center; }
+@media (max-width: 600px) {
+  .field-fullscreen-toggle { top: 7px; right: 7px; padding: 8px; font-size: 9px; }
+  .field-immersive-status { display: none; }
+  .square-viewport.field-immersive-fallback .field-immersive-toolbar,
+  .square-viewport.field-fullscreen-shell:fullscreen .field-immersive-toolbar { gap: 5px; padding: 6px; }
+  .field-immersive-toolbar button { padding: 7px; min-width: 34px; min-height: 34px; }
+}
